@@ -30,7 +30,7 @@ module RedmineDmsf
         @rails_app = app
         path = File.join(Redmine::Utils::relative_url_root, %w(dmsf webdav))
         @dav_app = Rack::Builder.new{
-          map path do
+          map '/dmsf/webdav/' do
             run DAV4Rack::Handler.new(
               root_uri_path: path,
               resource_class: RedmineDmsf::Webdav::ResourceProxy,
